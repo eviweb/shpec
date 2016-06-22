@@ -95,6 +95,12 @@ line'
 
       assert equal "${expected}" "${result}"
     end
+
+    it "makes stubbed function available to subshells"     
+      stub_command "mycmd" "echo mycmd"      
+      assert equal "mycmd" "$($SHPEC_ROOT/etc/subcmd)"
+      unstub_command "mycmd"
+    end
   end
 
   describe "testing files"

@@ -41,6 +41,7 @@ stub_command() {
 
   _shpec_stub_body="${2:-:}"
   eval "$1() { ${_shpec_stub_body}; }"
+  typeset -fx "$1"
 }
 
 unstub_command() { 
