@@ -87,12 +87,13 @@ line'
     end
 
     it "prevents loosing stubbed function"
-      local expected="assert double"
+      expected="assert double"
       stub_command "assert" "echo '${expected}'"
-      local result="$(assert)"
+      result="$(assert)"
       unstub_command "assert"
 
       assert equal "${expected}" "${result}"
+      unset expected result
     end
   end
 
